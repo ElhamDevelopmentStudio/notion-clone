@@ -7,7 +7,7 @@ import { Doc } from "@/convex/_generated/dataModel";
 import { UseCoverImage } from "@/hooks/useCoverImage";
 import { useMutation } from "convex/react";
 import { Divide, ImageIcon, Smile, X } from "lucide-react";
-import { ElementRef, TextareaHTMLAttributes, useRef, useState } from "react";
+import { ElementRef, useRef, useState } from "react";
 import TextAreaAutoSize from "react-textarea-autosize";
 
 interface ToolbarProps {

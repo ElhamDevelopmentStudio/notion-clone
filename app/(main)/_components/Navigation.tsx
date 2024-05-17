@@ -28,6 +28,8 @@ import { TrashBox } from "./TrashBox";
 import { useSearch } from "@/hooks/useSearch";
 import { useSettings } from "@/hooks/useSetting";
 import { Navbar } from "./Navbar";
+import DocumentId from "../(routes)/documents/[documentId]/page";
+import { useRouter } from "next/navigation";
 
 export const Navigation = () => {
   const search = useSearch();
@@ -40,6 +42,7 @@ export const Navigation = () => {
   const sidebarRef = useRef<ElementRef<"aside">>(null);
   const navbarRef = useRef<ElementRef<"div">>(null);
   const [isResetting, setIsResetting] = useState(false);
+  const router = useRouter();
 
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
@@ -124,7 +127,10 @@ export const Navigation = () => {
   };
 
   const handleCreate = () => {
-    const promise = create({ title: "Untitled" });
+    const promise = create({ title: "Untitled" }).then((documentId) =>
+      router.push(`/documents/${documentId}`)
+    );
+
     toast.promise(promise, {
       loading: "Creating new note...",
       success: "New note created.",
