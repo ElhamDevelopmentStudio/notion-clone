@@ -8,6 +8,23 @@
     height: 100%;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  input, button {
+    transition: all 0.3s ease;
+  }
+  
+  input:focus, button:hover {
+    outline: none;
+    transform: scale(1.05);
+  }
+
   @layer base {
     :root {
       --background: 0 0% 100%;

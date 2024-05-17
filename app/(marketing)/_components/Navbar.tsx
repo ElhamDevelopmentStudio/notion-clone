@@ -9,16 +9,21 @@ import { SignInButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/spinner";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
   const scrolled = useScrollTop();
   const { isAuthenticated, isLoading } = useConvexAuth();
+
   return (
-    <div
+    <motion.div
       className={cn(
         "z-50 bg-background dark:bg-[#1f1f1f] fixed top-0 flex items-center w-full p-6",
         scrolled && "border-b shadow-sm"
       )}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
     >
       <Logo />
       <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
@@ -31,7 +36,7 @@ export const Navbar = () => {
               </Button>
             </SignInButton>
             <SignInButton mode="modal">
-              <Button size="sm">Get notion-clone free</Button>
+              <Button size="sm">Get Notion-Clone Free</Button>
             </SignInButton>
           </>
         )}
@@ -43,8 +48,11 @@ export const Navbar = () => {
             <UserButton afterSignOutUrl="/" />
           </>
         )}
+        <Button variant="outline" size="sm">
+          Help
+        </Button>
         <ModeToggle />
       </div>
-    </div>
+    </motion.div>
   );
 };

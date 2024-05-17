@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { AlertDialogTitle } from "@radix-ui/react-alert-dialog";
 import React from "react";
+import { motion } from "framer-motion";
 
 interface AlertDialogProps {
   children: React.ReactNode;
@@ -31,18 +32,27 @@ export const ConfirmModal = ({ children, onConfirm }: AlertDialogProps) => {
         {children}
       </AlertDialogTrigger>
       <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutly sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
-            Cancel
-          </AlertDialogCancel>
-          <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
-        </AlertDialogFooter>
+        <motion.div
+          className="relative rounded-lg  max-w-lg w-full p-6"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutly sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirm}>
+              Confirm
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </motion.div>
       </AlertDialogContent>
     </AlertDialog>
   );
