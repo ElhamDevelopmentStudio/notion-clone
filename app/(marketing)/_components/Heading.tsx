@@ -4,7 +4,7 @@ import { Spinner } from "@/components/spinner";
 import { Button } from "@/components/ui/button";
 import { SignInButton } from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -19,8 +19,10 @@ export const Heading = () => {
       transition={{ duration: 0.5 }}
     >
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold">
-        Welcome, Be happy you made it, I certainly am. This is{" "}
-        <span className="underline text-gray-700">Notion Clone</span>
+        Welcome, be happy you made it, I certainly am. This is{" "}
+        <span className="underline text-gray-700 dark:text-gray-400">
+          Notion Clone
+        </span>
       </h1>
       <h3 className="text-base sm:text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300">
         Notion clone is just like notion except a bit worse, so good luck with
@@ -52,7 +54,7 @@ export const Heading = () => {
         >
           <SignInButton mode="modal">
             <Button>
-              Get Notion-Clone Free <ArrowRight className="h-4 w-4 m-2" />
+              Sign-in with Github <Github className="h-4 w-4 m-2" />
             </Button>
           </SignInButton>
         </motion.div>

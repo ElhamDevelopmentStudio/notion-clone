@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SignInButton } from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
 import { Spinner } from "@/components/spinner";
+import Link from "next/link";
 
 export const Heroes = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
@@ -62,20 +63,32 @@ export const Heroes = () => {
           Simplify your workflow with an intuitive and powerful tool that adapts
           to your needs.
         </p>
-        {isLoading ? (
+        {isLoading && (
           <div className="w-full flex items-center justify-center mt-9 transition">
             <Spinner size="lg" />
           </div>
-        ) : (
+        )}{" "}
+        {!isLoading && !isAuthenticated && (
           <SignInButton mode="modal">
             <motion.button
               className="mt-8 px-6 py-3 sm:px-8 sm:py-4 bg-black hover:bg-gray-900 text-white text-lg sm:text-xl font-bold rounded-lg shadow-xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get Started
+              Signin
             </motion.button>
           </SignInButton>
+        )}
+        {!isLoading && isAuthenticated && (
+          <Link href="/documents">
+            <motion.button
+              className="mt-8 px-6 py-3 sm:px-8 sm:py-4 bg-black hover:bg-gray-900 text-white text-lg sm:text-xl font-bold rounded-lg shadow-xl"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Create a Note...
+            </motion.button>
+          </Link>
         )}
       </motion.div>
     </div>
