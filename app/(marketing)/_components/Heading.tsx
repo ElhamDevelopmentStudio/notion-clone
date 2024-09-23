@@ -11,6 +11,8 @@ import Link from "next/link";
 export const Heading = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
 
+  
+
   return (
     <motion.div
       className="max-w-3xl space-y-4 text-center mx-auto"
